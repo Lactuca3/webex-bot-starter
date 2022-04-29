@@ -7,8 +7,13 @@ var bodyParser = require('body-parser');
 var app = express();
 app.use(bodyParser.json());
 app.use(express.static('images'));
-const config = require("./config.json");
+// const config = require("./config.json");
 
+const config = {
+  'webhookUrl': process.env.WEBHOOK_URL, 
+  'token': process.env.TOKEN,
+  'port': process.env.PORT
+}
 // init framework
 var framework = new framework(config);
 framework.start();
